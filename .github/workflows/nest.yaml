@@ -1,0 +1,32 @@
+name: Nest
+
+on:
+  pull_request:
+    branches: [ dev, main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Prepare Env
+        run: npm -g install @nest/cli
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint
+        run: npm run-script lint
+
+      - name: Build
+        run: npm run-script build
+
+      - name: Run test suit
+        run: npm run-script test

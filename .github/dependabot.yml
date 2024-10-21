@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    open-pull-requests-limit: 30
+    target-branch: dev
+    directory: "/" # Location of package manifests
+    rebase-strategy: "auto"
+    versioning-strategy: "auto"
+    schedule:
+        interval: daily
+        time: "06:00"
+        timezone: Europe/Paris
